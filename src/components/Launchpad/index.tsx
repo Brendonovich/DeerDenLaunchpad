@@ -51,7 +51,7 @@ const Launchpad = ({ size, preview, page }: Props) => {
             <CirclePad
               size={padSize}
               key={index * -1}
-              index={-1 * index}
+              index={-1 * (index + 1)}
               {...padProps}
             />
           ))}

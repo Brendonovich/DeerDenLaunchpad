@@ -58,6 +58,7 @@ export const usePadState = (page: number, index: number) => {
         velocity: 0x0C
       })
     });
+    
     //eslint-disable-next-line
   }, []);
 
