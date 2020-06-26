@@ -36,7 +36,7 @@ export const usePadState = (page: number, index: number) => {
     autorun(() => {
       let mapping: Mapping | undefined = store.mappings.mappings[page]?.[index];
       if (mapping === undefined) return;
-      
+
       setVal({
         color: lpColor(mapping?.color || [0, 0]),
         opacity: mapping?.color
@@ -48,17 +48,19 @@ export const usePadState = (page: number, index: number) => {
           : 0,
       });
 
-      if (mapping.color)
-        store.launchpads.currentLaunchpad?.output.playNote(index, "all", {
+      if (mapping.color) {
+        store.launchpads.currentLaunchpad?.output.playNote(index, 1, {
           rawVelocity: true,
           velocity: 0x10 * mapping.color[1] + mapping.color[0] + 0x0c,
         });
-      else store.launchpads.currentLaunchpad?.output.playNote(index, "all", {
-        rawVelocity: true,
-        velocity: 0x0C
-      })
+        console.log({index, velocity: (0x10 * mapping.color[1] + mapping.color[0] + 0x0c).toString(2)})
+      } else
+        store.launchpads.currentLaunchpad?.output.playNote(index, 1, {
+          rawVelocity: true,
+          velocity: 0x0c,
+        });
     });
-    
+
     //eslint-disable-next-line
   }, []);
 
