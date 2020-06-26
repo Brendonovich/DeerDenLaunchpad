@@ -4,7 +4,7 @@ import { lpColor, rgbToHsv } from "../utils";
 import { Mapping } from "../store/MappingStore";
 import { autorun } from "mobx";
 
-function getWindowDimensions() {
+const getWindowDimensions = () => {
   const { innerWidth: width, innerHeight: height } = window;
   return {
     width,

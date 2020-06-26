@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import SplitPane from "react-split-pane";
+import { saveAs } from "file-saver";
 
 import "./App.css";
 
@@ -16,7 +17,6 @@ export default () => {
   const store = useStore();
   const { width, height } = useWindowDimensions();
 
-  const [leftWidth, setLeftWidth] = useState(400);
   const [rightWidth, setRightWidth] = useState(400);
   const [pageHeight, setPageHeight] = useState(300);
 
@@ -25,12 +25,21 @@ export default () => {
     height: height - 300 - 20,
   });
 
+  const fileRef = useRef<HTMLInputElement>(null);
+
   useEffect(() => {
     setLpWindowSize({
-      width: width - leftWidth - rightWidth - 20,
+      width: width - rightWidth - 20,
       height: height - pageHeight - 20,
     });
-  }, [leftWidth, rightWidth, pageHeight, width, height]);
+  }, [rightWidth, pageHeight, width, height]);
+
+  const loadMappings = useCallback(async (file?: File) => {
+    if (file === undefined) return;
+    let json = JSON.parse(await file.text());
+    store.mappings.mappings = json;
+    // eslint-disable-next-line
+  }, []);
 
   return useObserver(() => (
     <SplitPane
@@ -69,6 +78,41 @@ export default () => {
         <Pages height={pageHeight} />
       </SplitPane>
       <>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginTop: 20,
+            fontSize: 18,
+          }}
+        >
+          <button
+            style={{ margin: "0 5px" }}
+            onClick={() =>
+              saveAs(
+                new Blob([JSON.stringify(store.mappings.mappings)], {
+                  type: "application/json",
+                }),
+                "mappings.ddl"
+              )
+            }
+          >
+            Save
+          </button>
+          <button
+            style={{ margin: "0 5px" }}
+            onClick={() => fileRef.current?.click()}
+          >
+            Load
+          </button>
+          <input
+            type="file"
+            accept=".ddl"
+            style={{ display: "none" }}
+            onChange={(e) => loadMappings(e.target.files?.[0])}
+            ref={fileRef}
+          />
+        </div>
         <Connection />
         {store.ui.selectedPad !== undefined && (
           <PadOptions pad={store.ui.selectedPad} />
