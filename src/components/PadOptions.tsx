@@ -184,6 +184,7 @@ const PadOptions = ({ pad }: { pad: number }) => {
                   </span>
                   {[0, 1, 2, 3].map((n) => (
                     <div
+                    key={n}
                       style={{
                         width: 25,
                         height: 25,

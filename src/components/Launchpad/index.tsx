@@ -1,4 +1,5 @@
 import React from "react";
+
 import Pad from "./Pad";
 import CirclePad from "./CirclePad";
 
@@ -17,6 +18,7 @@ export interface PadProps {
 
 const Launchpad = ({ size, preview, page }: Props) => {
   const padSize = size * (4 / 46);
+  
   let padProps = { page, preview };
   return (
     <div
@@ -100,7 +102,12 @@ const Launchpad = ({ size, preview, page }: Props) => {
           }}
         >
           {new Array(8).fill("", 0, 8).map((_, index) => (
-            <CirclePad size={padSize} key={8 + index * 0x10} index={8 + index * 0x10} {...padProps} />
+            <CirclePad
+              size={padSize}
+              key={8 + index * 0x10}
+              index={8 + index * 0x10}
+              {...padProps}
+            />
           ))}
         </div>
       </div>

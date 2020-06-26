@@ -7,7 +7,7 @@ import { useObserver } from "mobx-react-lite";
 const CirclePad = ({ size, index, preview, page }: PadProps) => {
   const store = useStore();
   const { color, opacity } = usePadState(page, index);
-  
+
   return useObserver(() => (
     <div
       style={{
@@ -32,6 +32,7 @@ const CirclePad = ({ size, index, preview, page }: PadProps) => {
         onClick={() => {
           if (!preview) store.ui.selectedPad = index;
         }}
+        onDoubleClick={() => store.mappings.performAction(index)}
       >
         <div
           style={{

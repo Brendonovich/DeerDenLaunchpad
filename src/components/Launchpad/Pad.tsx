@@ -23,6 +23,7 @@ const Pad = ({ size, index, preview, page }: PadProps) => {
       onClick={() => {
         if (!preview) store.ui.selectedPad = index;
       }}
+      onDoubleClick={() => store.mappings.performAction(index)}
     >
       <div
         style={{
