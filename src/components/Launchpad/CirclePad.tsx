@@ -6,7 +6,7 @@ import { useObserver } from "mobx-react-lite";
 
 const CirclePad = ({ size, index, preview, page }: PadProps) => {
   const store = useStore();
-  const { color, opacity } = usePadState(page, index);
+  const { color, opacity } = usePadState(page, index, preview);
 
   return useObserver(() => (
     <div

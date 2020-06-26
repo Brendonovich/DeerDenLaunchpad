@@ -32,37 +32,40 @@ export const usePadState = (page: number, index: number, preview?: boolean) => {
 
   const [val, setVal] = useState<any>({});
 
-  useEffect(() => {
-    autorun(() => {
-      let mapping: Mapping | undefined = store.mappings.mappings[page]?.[index];
+  useEffect(
+    () =>
+      autorun(() => {
+        let mapping: Mapping | undefined =
+          store.mappings.mappings[page]?.[index];
 
-      setVal({
-        color: lpColor(mapping?.color || [0, 0]),
-        opacity: mapping?.color
-          ? rgbToHsv([
-              (240 * mapping?.color![0]) / 3,
-              (240 * mapping?.color![1]) / 3,
-              0,
-            ])[2]
-          : 0,
-      });
-
-      if (preview) return;
-
-      if (mapping?.color)
-        store.launchpads.currentLaunchpad?.output.playNote(index, 1, {
-          rawVelocity: true,
-          velocity: 0x10 * mapping.color[1] + mapping.color[0] + 0x0c,
+        setVal({
+          color: lpColor(mapping?.color || [0, 0]),
+          opacity: mapping?.color
+            ? rgbToHsv([
+                (240 * mapping?.color![0]) / 3,
+                (240 * mapping?.color![1]) / 3,
+                0,
+              ])[2]
+            : 0,
         });
-      else
-        store.launchpads.currentLaunchpad?.output.playNote(index, 1, {
-          rawVelocity: true,
-          velocity: 0x0c,
-        });
-    });
+
+        if (preview) return;
+
+        if (mapping?.color)
+          store.launchpads.currentLaunchpad?.output.playNote(index, 1, {
+            rawVelocity: true,
+            velocity: 0x10 * mapping.color[1] + mapping.color[0] + 0x0c,
+          });
+        else
+          store.launchpads.currentLaunchpad?.output.playNote(index, 1, {
+            rawVelocity: true,
+            velocity: 0x0c,
+          });
+      }),
 
     //eslint-disable-next-line
-  }, [page, index, preview]);
+    [page, index, preview]
+  );
 
   return val;
 };
