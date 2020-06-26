@@ -6,7 +6,7 @@ import { usePadState } from "../../hooks";
 
 const Pad = ({ size, index, preview, page }: PadProps) => {
   const store = useStore();
-  const { color, opacity } = usePadState(page, index);
+  const { color, opacity } = usePadState(page, index, preview);
 
   return useObserver(() => (
     <div

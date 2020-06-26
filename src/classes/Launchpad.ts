@@ -2,8 +2,6 @@ import {
   Input,
   Output,
   InputEventNoteon,
-  InputEventNoteoff,
-  InputEventControlchange,
 } from "webmidi";
 import { EventEmitter } from "events";
 

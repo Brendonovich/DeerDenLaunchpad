@@ -27,7 +27,7 @@ export const useWindowDimensions = () => {
   return windowDimensions;
 };
 
-export const usePadState = (page: number, index: number) => {
+export const usePadState = (page: number, index: number, preview?: boolean) => {
   const store = useStore();
 
   const [val, setVal] = useState<any>({});
@@ -35,7 +35,7 @@ export const usePadState = (page: number, index: number) => {
   useEffect(() => {
     autorun(() => {
       let mapping: Mapping | undefined = store.mappings.mappings[page]?.[index];
-      
+
       setVal({
         color: lpColor(mapping?.color || [0, 0]),
         opacity: mapping?.color
@@ -47,7 +47,9 @@ export const usePadState = (page: number, index: number) => {
           : 0,
       });
 
-      if (mapping?.color) 
+      if (preview) return;
+
+      if (mapping?.color)
         store.launchpads.currentLaunchpad?.output.playNote(index, 1, {
           rawVelocity: true,
           velocity: 0x10 * mapping.color[1] + mapping.color[0] + 0x0c,
