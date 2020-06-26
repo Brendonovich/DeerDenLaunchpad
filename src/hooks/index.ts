@@ -62,7 +62,7 @@ export const usePadState = (page: number, index: number, preview?: boolean) => {
     });
 
     //eslint-disable-next-line
-  }, [page, index]);
+  }, [page, index, preview]);
 
   return val;
 };
