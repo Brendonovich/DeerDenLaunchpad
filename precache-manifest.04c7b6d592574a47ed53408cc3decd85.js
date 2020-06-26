@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "7e6fa3080827ea6fd82ff8df7db2a266",
+    "revision": "4c0cc0eebedb4ae19710a3d8d578dcdd",
     "url": "/DeerDenLaunchpad/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/DeerDenLaunchpad/static/css/2.de424728.chunk.css"
   },
   {
-    "revision": "d403ef43ae05e2dc702a",
+    "revision": "54d5b69fd80cdfd24e0f",
     "url": "/DeerDenLaunchpad/static/css/main.2287e7a1.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/DeerDenLaunchpad/static/js/2.bf446af3.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "d403ef43ae05e2dc702a",
-    "url": "/DeerDenLaunchpad/static/js/main.a93d7062.chunk.js"
+    "revision": "54d5b69fd80cdfd24e0f",
+    "url": "/DeerDenLaunchpad/static/js/main.83817374.chunk.js"
   },
   {
     "revision": "eb7e324b686f9389a374",

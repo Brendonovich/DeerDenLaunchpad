@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/DeerDenLaunchpad/precache-manifest.55d0e1870583b0ca0f0f041e5b27dc17.js"
+  "/DeerDenLaunchpad/precache-manifest.04c7b6d592574a47ed53408cc3decd85.js"
 );
 
 self.addEventListener('message', (event) => {
