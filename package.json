@@ -21,7 +21,7 @@
     "@types/redux": "^3.6.0",
     "bootstrap": "^4.4.1",
     "color-convert": "^2.0.1",
-    "electron": "^8.2.0",
+    "electron": "^8.2.4",
     "file-saver": "^2.0.2",
     "lodash": "^4.17.15",
     "mobx": "^5.15.4",
