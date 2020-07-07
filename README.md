@@ -6,4 +6,6 @@ Allows for a Launchpad MK1 to emit any MIDI signal needed by taking input from t
 
 Additionally, the LEDs on the pads can be controlled, so that different mappings can be assigned different colours.
 
+DeerDenRadio uses this website to control [Magic Music Visuals](https://magicmusicvisuals.com/) by assigning MIDI messages from the passthrough to switch scenes via Magic's MIDI Learn functionality, creating endless possibilities for scene selection.
+
 Developed with Typescript, React, MobX and WebMIDI.
